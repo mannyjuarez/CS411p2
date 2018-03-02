@@ -1,0 +1,318 @@
+package lexicalanalyzer;
+
+import java_cup.runtime.*;
+
+parser code {:
+    
+    /* Change the method report_error so it will display the line and
+       column of where the error occurred in the input as well as the
+       reason for the error which is passed into the method in the
+       String 'message'. */
+    public void report_error(String message, Object info) {
+   
+        /* Create a StringBuilder called 'm' with the string 'Error' in it. */
+        StringBuilder m = new StringBuilder("Error");
+   
+        /* Check if the information passed to the method is the same
+           type as the type java_cup.runtime.Symbol. */
+        if (info instanceof java_cup.runtime.Symbol) {
+            /* Declare a java_cup.runtime.Symbol object 's' with the
+               information in the object info that is being typecasted
+               as a java_cup.runtime.Symbol object. */
+            java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
+   
+            /* Check if the line number in the input is greater or
+               equal to zero. */
+            if (s.left >= 0) {                
+                /* Add to the end of the StringBuilder error message
+                   the line number of the error in the input. */
+                m.append(" in line "+(s.left+1));   
+                /* Check if the column number in the input is greater
+                   or equal to zero. */
+                if (s.right >= 0)                    
+                    /* Add to the end of the StringBuilder error message
+                       the column number of the error in the input. */
+                    m.append(", column "+(s.right+1));
+            }
+        }
+   
+        /* Add to the end of the StringBuilder error message created in
+           this method the message that was passed into this method. */
+        m.append(" : "+message);
+   
+        /* Print the contents of the StringBuilder 'm', which contains
+           an error message, out on a line. */
+        System.err.println(m);
+    }
+   
+    /* Change the method report_fatal_error so when it reports a fatal
+       error it will display the line and column number of where the
+       fatal error occurred in the input as well as the reason for the
+       fatal error which is passed into the method in the object
+       'message' and then exit.*/
+    public void report_fatal_error(String message, Object info) {
+        report_error(message, info);
+        System.exit(1);
+    }
+:};
+
+/* Terminals (tokens returned by the scanner). */
+
+terminal     _boolean, _break, _class, _double, _else, _extends, _for, _if;
+terminal     _implements, _int, _interface, _newarray, _println, _readln;
+terminal     _return, _string, _void, _while, _plus, _minus, _less;
+terminal     _multiplication, _division, _mod, _lessequal, _greater;
+terminal     _greaterequal, _equal, _notequal, _and, _or, _not, _assignop;
+terminal     _semicolon, _comma, _period, _leftparen, _rightparen,_leftbracket;
+terminal     _rightbracket, _leftbrace, _rightbrace, _intconstant, 
+terminal     _doubleconstant, _stringconstant, _booleanconstant, _id, _EOF;
+
+
+/* Non-terminals */
+
+non terminal First, Program, Decl, VariableDecl, Variable, Type, FunctionDecl;
+non terminal Formals, List, ClassDecl, Field, InterfaceDecl, Prototype;
+non terminal StmtBlock, Stmt, IfStmt, WhileStmt, ForStmt, BreakStmt, IDS;
+non terminal ReturnStmt, PrintStmt, Expr, Lvalue, Call, Actuals,Constant, Empty;
+non terminal KleeneField, KleenePrototype, Extends, Implements, Express, Else;
+non terminal PositiveExpr;
+
+
+/* Precedences */
+
+precedence nonassoc _assignop;
+precedence left     _or;
+precedence left     _and;
+precedence nonassoc _equal, _notequal;
+precedence nonassoc _less, _lessequal, _greater, _greaterequal;
+precedence left _plus, _minus;
+precedence left _multiplication, _division, _mod;
+precedence left _not;
+precedence left _leftbracket, _period;
+
+First           ::= Program
+                    ;
+
+Program         ::= Decl 
+                    |
+                    Decl Program
+                    ;
+
+Decl            ::= VariableDecl
+                    |
+                    FunctionDecl
+                    |
+                    ClassDecl
+                    |
+                    InterfaceDecl
+                    ;
+
+VariableDecl    ::= Variable
+                    ;
+
+Variable        ::= Type _id
+                    ;
+
+Type            ::= _int
+                    |
+                    _double
+                    |
+                    _boolean
+                    |
+                    _string
+                    |
+                    Type _leftbracket _rightbracket
+                    |
+                    _id
+                    ;
+
+FunctionDecl    ::= Type _id _leftparen Formals _rightparen StmtBlock
+                    |
+                    _void _id _leftparen Formals _rightparen StmtBlock
+                    ;
+
+Formals         ::= Variable
+                    |
+                    Variable _comma List
+                    |
+                    Empty
+                    ;
+
+List            ::= Variable _comma List
+                    |
+                    Variable
+                    ;
+
+ClassDecl       ::= _class _id Extends Implements _leftbrace KleeneField _rightbrace
+                    ;
+
+Extends         ::= _extends _id
+                    |
+                    Empty
+                    ;
+
+Implements      ::= _implements IDS
+                    ;
+
+KleeneField     ::= Field KleeneField
+                    |
+                    Empty
+                    ;
+
+IDS             ::= _id
+                    |
+                    _id _comma IDS
+                    ;
+
+Field           ::= VariableDecl
+                    |
+                    FunctionDecl
+                    ;
+
+InterfaceDecl   ::= _interface _id _leftbrace KleenePrototype _rightbrace
+                    ;
+
+KleenePrototype ::= Prototype KleenePrototype
+                    |
+                    Empty
+                    ;
+
+Prototype       ::= Type _id _leftparen Formals _rightparen _semicolon
+                    |
+                    _void _id _leftparen Formals _rightparen _semicolon
+                    ;
+
+StmtBlock       ::= _leftbrace KleeneVarDec KleeneStmt _rightbrace
+                    ;
+
+KleeneVarDec     ::= VariableDecl KleenVarDec
+                    |
+                    Empty
+                    ;
+
+KleeneStmt      ::= Stmt KleeneStmt
+                    |
+                    Empty
+                    ;
+
+Express         ::= Expr 
+                    |
+                    Empty
+                    ;
+                
+Stmt            ::= Express _semicolon
+                    |
+                    IfStmt
+                    |
+                    WhileStmt
+                    |
+                    ForStmt
+                    |
+                    BreakStmt
+                    |
+                    ReturnStmt
+                    |
+                    PrintStmt
+                    |
+                    StmtBlock
+                    ;
+
+IfStmt          ::= _if _leftparen Expr _rightparen Stmt Else
+                    ;
+              
+Else            ::= _else Stmt
+                    |
+                    Empty
+                    ;
+
+WhileStmt       ::= _while _leftparen Expr _rightparen Stmt
+
+ForStmt         ::= Express _semicolon Expr _semicolon Express _rightparen Stmt
+                    ;
+
+BreakStmt       ::= _break _semicolon
+                    ;
+
+ReturnStmt      ::= _return Express _semicolon
+                    ;
+
+PrintStmt       ::= _println _leftparen PositiveExpr _rightparen _semicolon
+                    ;
+
+PositiveExpr    ::= Expr _comma PositiveExpr
+                    |
+                    Expr
+                    ;
+
+Expr            ::= Lvalue _assignop Expr
+                    |
+                    Constant
+                    |
+                    Lvalue
+                    |
+                    Call
+                    |
+                    _leftparen Expr _rightparen
+                    |
+                    Expr _plus Expr
+                    |
+                    Expr _minus Expr
+                    |
+                    Expr _multiplication Expr
+                    |
+                    Expr _division Expr
+                    |
+                    Expr _mod Expr
+                    |
+                    _minus Expr
+                    |
+                    Expr _less Expr
+                    |
+                    Expr _lessequal Expr
+                    |
+                    Expr _greater Expr
+                    |
+                    Expr _greaterequal Expr
+                    |
+                    Expr _equal Expr
+                    |
+                    Expr _notequal Expr
+                    |
+                    Expr _and Expr
+                    |
+                    Expr _or Expr
+                    |
+                    _not Expr
+                    ;
+
+Lvalue          ::= _id
+                    |
+                    Lvalue
+                    |
+                    _leftbracket Expr _rightbracket
+                    |
+                    Lvalue _period _id
+                    ;
+
+Call            ::= _id _leftparen Actuals _rightparen
+                    |
+                    _id _period _id _leftparen Actuals _rightparen
+                    ;
+
+Actuals         ::= PositiveExpr
+                    |
+                    Empty
+                    ;
+
+Constant        ::= _intconstant
+                    |
+                    _doubleconstant
+                    |
+                    _stringconstant
+                    |
+                    _booleanconstant
+                    ;
+                    
+            
+Empty           ::= /* nothing */
+                    ;
