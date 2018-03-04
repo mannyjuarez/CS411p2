@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/mannyjuarez/Documents/lexicalAnalyzer/src/lexicalanalyzer/Lexer.flex</file>
-            <file>file:/Users/mannyjuarez/Documents/lexicalAnalyzer/src/lexicalanalyzer/Symbol.java</file>
-            <file>file:/Users/mannyjuarez/Documents/lexicalAnalyzer/src/lexicalanalyzer/syntax.cup</file>
+            <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/Lexer.flex</file>
+            <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/syntax.cup</file>
+            <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/LexicalAnalyzer.java</file>
         </group>
     </open-files>
 </project-private>

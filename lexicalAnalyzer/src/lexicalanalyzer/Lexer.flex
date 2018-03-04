@@ -1,6 +1,7 @@
 package lexicalanalyzer;
 
 import java_cup.runtime.*;
+import java_cup.runtime.Symbol;
 
 %%
 %class Lexer
@@ -11,23 +12,23 @@ import java_cup.runtime.*;
 %cup
 
 %{
-    private symbol symbol(int type) {
-        return new symbol(type, yyline, yycolumn);
+    private Symbol symbol(int type) {
+        return new Symbol(type, yyline, yycolumn);
     }
 
-    private symbol symbol(int type, Object value) {
-        return new symbol(type, yyline, yycolumn, value);
+    private Symbol symbol(int type, Object value) {
+        return new Symbol(type, yyline, yycolumn, value);
     }
 
 %}
 
 %{
-        string type;
+        String type;
 %}
 
 id                  = [A-Za-z$] [A-Za-z_$0-9]*
 ws                  = [\ \t]
-newLine             = [\r|\n|\r\n]
+Line                = [\r|\n|\r\n]
 integer             = [0-9][0-9]*
 hexInt              = 0[xX][0-9A-Fa-f]+
 singlecom           = "//".*
@@ -42,57 +43,56 @@ stringchar          = \"[^\n\"]*\"
 %%
 
 
-    "if"                {return new symbol(sym._if);}
-    "implements"        {return new symbol(sym._implements);}
-    "interface"         {return new symbol(sym._interface);}
-    "newarray"          {return new symbol(sym._newarray);}
-    "println"           {return new symbol(sym._println);}
-    "readln"            {return new symbol(sym._readln);}
-    "return"            {return new symbol(sym._return);}
-    "string"            {return new symbol(sym._string);}
-    "void"              {return new symbol(sym._void);}
-    "while"             {return new symbol(sym._while);}
-    "int"               {return new symbol(sym._int);}
-    "boolean"           {return new symbol(sym._boolean);}
-    "true"              {return new symbol(sym._booleanconstant);}
-    "false"             {return new symbol(sym._booleanconstant);}
-    "break"             {return new symbol(sym._break);}
-    "class"             {return new symbol(sym._class);}
-    "double"            {return new symbol(sym._double);}
-    "else"              {return new symbol(sym._else);}
-    "extends"           {return new symbol(sym._extends);}
-    "for"               {return new symbol(sym._for);}
-    "="                 {return new symbol(sym._assignop);}
-    "*"                 {return new symbol(sym._multiplication);}
-    "/"                 {return new symbol(sym._division);}
-    "%"                 {return new symbol(sym._mod);}
-    "<"                 {return new symbol(sym._less);}
-    "<="                {return new symbol(sym._lessequal);}
-    ">"                 {return new symbol(sym._greater);}
-    ">="                {return new symbol(sym._greaterequal);}
-    "=="                {return new symbol(sym._equal);}
-    "!="                {return new symbol(sym._notequal);}
-    "&&"                {return new symbol(sym._and);}
-    "||"                {return new symbol(sym._or);}
-    "!"                 {return new symbol(sym._not);}
-    ";"                 {return new symbol(sym._semicolon);}
-    ","                 {return new symbol(sym._comma);}
-    "."                 {return new symbol(sym._period);}
-    "["                 {return new symbol(sym._leftbracket);}
-    "]"                 {return new symbol(sym._rightbracket);}
-    "{"                 {return new symbol(sym._leftbrace);}
-    "}"                 {return new symbol(sym._rightbrace);}
-    "("                 {return new symbol(sym._leftparen);}
-    ")"                 {return new symbol(sym._rightparen);}
-    "+"                 {return new symbol(sym._plus);}
-    "-"                 {return new symbol(sym._minus);}
-    {id}                {type = yytext(); return new symbol(sym._id);} 
-    {integer}           {return new symbol(sym._intconstant);}
-    {hexInt}            {return new symbol(sym._intconstant);}
+    "if"                {return symbol(sym._if);}
+    "implements"        {return symbol(sym._implements);}
+    "interface"         {return symbol(sym._interface);}
+    "newarray"             {return symbol(sym._newarray);}
+    "println"           {return symbol(sym._println);}
+    "readln"            {return symbol(sym._readln);}
+    "return"            {return symbol(sym._return);}
+    "string"            {return symbol(sym._string);}
+    "void"              {return symbol(sym._void);}
+    "while"             {return symbol(sym._while);}
+    "int"               {return symbol(sym._int);}
+    "boolean"           {return symbol(sym._boolean);}
+    "true"              {return symbol(sym._booleanconstant);}
+    "false"             {return symbol(sym._booleanconstant);}
+    "break"             {return symbol(sym._break);}
+    "class"             {return symbol(sym._class);}
+    "double"            {return symbol(sym._double);}
+    "else"              {return symbol(sym._else);}
+    "extends"           {return symbol(sym._extends);}
+    "for"               {return symbol(sym._for);}
+    "="                 {return symbol(sym._assignop);}
+    "*"                 {return symbol(sym._multiplication);}
+    "/"                 {return symbol(sym._division);}
+    "%"                 {return symbol(sym._mod);}
+    "<"                 {return symbol(sym._less);}
+    "<="                {return symbol(sym._lessequal);}
+    ">"                 {return symbol(sym._greater);}
+    ">="                {return symbol(sym._greaterequal);}
+    "=="                {return symbol(sym._equal);}
+    "!="                {return symbol(sym._notequal);}
+    "&&"                {return symbol(sym._and);}
+    "||"                {return symbol(sym._or);}
+    "!"                 {return symbol(sym._not);}
+    ";"                 {return symbol(sym._semicolon);}
+    ","                 {return symbol(sym._comma);}
+    "."                 {return symbol(sym._period);}
+    "["                 {return symbol(sym._leftbracket);}
+    "]"                 {return symbol(sym._rightbracket);}
+    "{"                 {return symbol(sym._leftbrace);}
+    "}"                 {return symbol(sym._rightbrace);}
+    "("                 {return symbol(sym._leftparen);}
+    ")"                 {return symbol(sym._rightparen);}
+    "+"                 {return symbol(sym._plus);}
+    "-"                 {return symbol(sym._minus);}
+    {id}                {type = yytext(); return symbol(sym._id);} 
+    {integer}           {return symbol(sym._intconstant);}
+    {hexInt}            {return symbol(sym._intconstant);}
     {ws}                {}
-    {newLine}           {system.out.println();}
+    {Line}              { System.out.println();}
     {singlecom}         {}
     {comment}           {}
-    {DoubleLiteral}     {return new symbol(sym._doubleconstant);}
-    {stringchar}        {return new symbol(sym._stringconstant);}
-    <<EOF>>             {return new symbol(sym._EOF); }
+    {DoubleLiteral}     {return symbol(sym._doubleconstant);}
+    {stringchar}        {return symbol(sym._stringconstant);}

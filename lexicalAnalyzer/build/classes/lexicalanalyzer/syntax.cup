@@ -64,7 +64,7 @@ terminal     _return, _string, _void, _while, _plus, _minus, _less;
 terminal     _multiplication, _division, _mod, _lessequal, _greater;
 terminal     _greaterequal, _equal, _notequal, _and, _or, _not, _assignop;
 terminal     _semicolon, _comma, _period, _leftparen, _rightparen,_leftbracket;
-terminal     _rightbracket, _leftbrace, _rightbrace, _intconstant, 
+terminal     _rightbracket, _leftbrace, _rightbrace, _intconstant; 
 terminal     _doubleconstant, _stringconstant, _booleanconstant, _id, _EOF;
 
 
@@ -75,7 +75,7 @@ non terminal Formals, List, ClassDecl, Field, InterfaceDecl, Prototype;
 non terminal StmtBlock, Stmt, IfStmt, WhileStmt, ForStmt, BreakStmt, IDS;
 non terminal ReturnStmt, PrintStmt, Expr, Lvalue, Call, Actuals,Constant, Empty;
 non terminal KleeneField, KleenePrototype, Extends, Implements, Express, Else;
-non terminal PositiveExpr;
+non terminal PositiveExpr, KleeneVarDec, KleeneStmt;
 
 
 /* Precedences */
@@ -185,7 +185,7 @@ Prototype       ::= Type _id _leftparen Formals _rightparen _semicolon
 StmtBlock       ::= _leftbrace KleeneVarDec KleeneStmt _rightbrace
                     ;
 
-KleeneVarDec     ::= VariableDecl KleenVarDec
+KleeneVarDec     ::= VariableDecl KleeneVarDec
                     |
                     Empty
                     ;
@@ -226,8 +226,8 @@ Else            ::= _else Stmt
                     ;
 
 WhileStmt       ::= _while _leftparen Expr _rightparen Stmt
-
-ForStmt         ::= Express _semicolon Expr _semicolon Express _rightparen Stmt
+                    ;
+ForStmt         ::= _for Express _semicolon Expr _semicolon Express _rightparen Stmt
                     ;
 
 BreakStmt       ::= _break _semicolon
