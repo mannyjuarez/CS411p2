@@ -367,7 +367,7 @@ class Lexer implements java_cup.runtime.Scanner {
   private boolean zzAtBOL = true;
 
   /** zzAtEOF == true <=> the scanner is at the EOF */
-  private boolean zzAtEOF;
+  boolean zzAtEOF;
 
   /** denotes if the user-EOF-code has already been executed */
   private boolean zzEOFDone;
