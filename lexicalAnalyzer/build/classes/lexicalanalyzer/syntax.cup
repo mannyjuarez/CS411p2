@@ -1,62 +1,62 @@
-package lexicalanalyzer;
+ 
+   
+/* ---------------Seccion de declaraciones preliminares--------------------*/
+package ejemplocup;
 
+/* Import the class java_cup.runtime.*  */
 import java_cup.runtime.*;
-
+import java.io.FileReader;
+   
+/* Codigo del parser, se copia integramente a la clase final.
+    Agregamos el manejo de errores. */
 parser code {:
     
-    /* Change the method report_error so it will display the line and
-       column of where the error occurred in the input as well as the
-       reason for the error which is passed into the method in the
-       String 'message'. */
+    /* Reporte de error encontrado. */
     public void report_error(String message, Object info) {
-   
-        /* Create a StringBuilder called 'm' with the string 'Error' in it. */
         StringBuilder m = new StringBuilder("Error");
-   
-        /* Check if the information passed to the method is the same
-           type as the type java_cup.runtime.Symbol. */
         if (info instanceof java_cup.runtime.Symbol) {
-            /* Declare a java_cup.runtime.Symbol object 's' with the
-               information in the object info that is being typecasted
-               as a java_cup.runtime.Symbol object. */
             java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
-   
-            /* Check if the line number in the input is greater or
-               equal to zero. */
             if (s.left >= 0) {                
-                /* Add to the end of the StringBuilder error message
-                   the line number of the error in the input. */
-                m.append(" in line "+(s.left+1));   
-                /* Check if the column number in the input is greater
-                   or equal to zero. */
-                if (s.right >= 0)                    
-                    /* Add to the end of the StringBuilder error message
-                       the column number of the error in the input. */
+                m.append(" in line "+(s.left+1));
+                if (s.right >= 0)
                     m.append(", column "+(s.right+1));
             }
         }
-   
-        /* Add to the end of the StringBuilder error message created in
-           this method the message that was passed into this method. */
         m.append(" : "+message);
-   
-        /* Print the contents of the StringBuilder 'm', which contains
-           an error message, out on a line. */
         System.err.println(m);
     }
    
-    /* Change the method report_fatal_error so when it reports a fatal
-       error it will display the line and column number of where the
-       fatal error occurred in the input as well as the reason for the
-       fatal error which is passed into the method in the object
-       'message' and then exit.*/
+    /* Cuando se encuentra un error de donde el sistema no puede
+        recuperarse, se lanza un error fatal. Se despliega el mensaje
+        de error y se finaliza la ejecucion. */
     public void report_fatal_error(String message, Object info) {
         report_error(message, info);
         System.exit(1);
     }
-:};
 
-/* Terminals (tokens returned by the scanner). */
+    /* Metodo main para garantizar la ejecucion del analizador
+       lexico y sintactico, ademas que se pase como parametro la tabla
+       de simbolos correspondiente. */
+    public static void main(String[] args){
+        try {
+            AnalizadorSintactico asin = new AnalizadorSintactico(
+                    new AnalizadorLexico( new FileReader(args[0])));
+            Object result = asin.parse().value;
+            System.out.println("\n*** Resultados finales ***");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+:};
+   
+
+   
+/* ------------Declaracion de simbolos terminales y no terminales---------- */
+   
+/* Terminales (tokens obtenidos por el analizador lexico).  
+
+   Terminales que no tienen un valor son listados primero, los terminales que
+   tienen un valor como los enteros son listados en la segunda o demas lineas. */
 
 terminal     _boolean, _break, _class, _double, _else, _extends, _for, _if;
 terminal     _implements, _int, _interface, _newarray, _println, _readln;
@@ -65,22 +65,26 @@ terminal     _multiplication, _division, _mod, _lessequal, _greater;
 terminal     _greaterequal, _equal, _notequal, _and, _or, _not, _assignop;
 terminal     _semicolon, _comma, _period, _leftparen, _rightparen,_leftbracket;
 terminal     _rightbracket, _leftbrace, _rightbrace, _intconstant; 
-terminal     _doubleconstant, _stringconstant, _booleanconstant, _id, _EOF;
+terminal     _doubleconstant, _stringconstant, _booleanconstant, _id;
+   
+/* No terminales usados en la seccion gramatical. 
 
-
-/* Non-terminals */
+   Primero se lista los no terminales que tienen un valor Object y despues
+   se lista los no terminales que tienen un entero. Un Object se refiere a que
+   no tienen tipo, pudiendo ser entero o String. */
 
 non terminal First, Program, Decl, VariableDecl, Variable, Type, FunctionDecl;
 non terminal Formals, List, ClassDecl, Field, InterfaceDecl, Prototype;
 non terminal StmtBlock, Stmt, IfStmt, WhileStmt, ForStmt, BreakStmt, IDS;
-non terminal ReturnStmt, PrintStmt, Expr, Lvalue, Call, Actuals,Constant, Empty;
-non terminal KleeneField, KleenePrototype, Extends, Implements, Express, Else;
-non terminal PositiveExpr, KleeneVarDec, KleeneStmt;
+non terminal ReturnStmt, PrintStmt, Expr, Lvalue, Call, Actuals,Constant;
+non terminal KleeneField, KleenePrototype, Extends, Implements, Express;
+non terminal PositiveExpr, KleeneVarDec, KleeneStmt, Matched, Unmatched;
+   
 
+/* -------------Seccion de predencia y asociacion de los terminales----------- */
+   
 
-/* Precedences */
-
-precedence nonassoc _assignop;
+  precedence nonassoc _assignop;
 precedence left     _or;
 precedence left     _and;
 precedence nonassoc _equal, _notequal;
@@ -89,6 +93,8 @@ precedence left _plus, _minus;
 precedence left _multiplication, _division, _mod;
 precedence left _not;
 precedence left _leftbracket, _period;
+
+start with First;
 
 First           ::= Program
                     ;
@@ -135,9 +141,7 @@ Formals         ::= Variable
                     |
                     Variable _comma List
                     |
-                    Empty
                     ;
-
 List            ::= Variable _comma List
                     |
                     Variable
@@ -148,7 +152,6 @@ ClassDecl       ::= _class _id Extends Implements _leftbrace KleeneField _rightb
 
 Extends         ::= _extends _id
                     |
-                    Empty
                     ;
 
 Implements      ::= _implements IDS
@@ -156,7 +159,6 @@ Implements      ::= _implements IDS
 
 KleeneField     ::= Field KleeneField
                     |
-                    Empty
                     ;
 
 IDS             ::= _id
@@ -174,32 +176,27 @@ InterfaceDecl   ::= _interface _id _leftbrace KleenePrototype _rightbrace
 
 KleenePrototype ::= Prototype KleenePrototype
                     |
-                    Empty
                     ;
-
 Prototype       ::= Type _id _leftparen Formals _rightparen _semicolon
                     |
                     _void _id _leftparen Formals _rightparen _semicolon
                     ;
 
-StmtBlock       ::= _leftbrace KleeneVarDec KleeneStmt _rightbrace
+StmtBlock       ::= _leftbrace KleeneVarDec 
                     ;
 
 KleeneVarDec     ::= VariableDecl KleeneVarDec
                     |
-                    Empty
+                    KleeneStmt
                     ;
 
 KleeneStmt      ::= Stmt KleeneStmt
                     |
-                    Empty
+                    _rightbrace
                     ;
-
 Express         ::= Expr 
                     |
-                    Empty
                     ;
-                
 Stmt            ::= Express _semicolon
                     |
                     IfStmt
@@ -217,17 +214,29 @@ Stmt            ::= Express _semicolon
                     StmtBlock
                     ;
 
-IfStmt          ::= _if _leftparen Expr _rightparen Stmt Else
-                    ;
-              
-Else            ::= _else Stmt
+IfStmt          ::= Matched 
                     |
-                    Empty
+                    Unmatched
+                    ;
+
+Matched         ::= _if _leftparen Expr _rightparen Matched _else Matched
+                    ;
+
+Unmatched       ::= _if _leftparen Expr _rightparen IfStmt
+                    |
+                    _if _leftparen Expr _rightparen Matched _else Unmatched
                     ;
 
 WhileStmt       ::= _while _leftparen Expr _rightparen Stmt
                     ;
-ForStmt         ::= _for Express _semicolon Expr _semicolon Express _rightparen Stmt
+
+ForStmt         ::= _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt
+                    |
+                    _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt
+                    |
+                    _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt
+                    |
+                    _for _leftparen _semicolon Expr _semicolon _rightparen Stmt
                     ;
 
 BreakStmt       ::= _break _semicolon
@@ -235,7 +244,6 @@ BreakStmt       ::= _break _semicolon
 
 ReturnStmt      ::= _return Express _semicolon
                     ;
-
 PrintStmt       ::= _println _leftparen PositiveExpr _rightparen _semicolon
                     ;
 
@@ -287,9 +295,7 @@ Expr            ::= Lvalue _assignop Expr
 
 Lvalue          ::= _id
                     |
-                    Lvalue
-                    |
-                    _leftbracket Expr _rightbracket
+                    Lvalue _leftbracket Expr _rightbracket
                     |
                     Lvalue _period _id
                     ;
@@ -301,7 +307,6 @@ Call            ::= _id _leftparen Actuals _rightparen
 
 Actuals         ::= PositiveExpr
                     |
-                    Empty
                     ;
 
 Constant        ::= _intconstant
@@ -312,7 +317,4 @@ Constant        ::= _intconstant
                     |
                     _booleanconstant
                     ;
-                    
-            
-Empty           ::= /* nothing */
-                    ;
+                                                      
