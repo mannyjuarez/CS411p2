@@ -1,0 +1,9 @@
+run:
+"a[3][4.5][b] = result = x + y + z;"
+
+id	leftbracket	
+14
+Error in line 1, column 3 : Syntax error
+Error in line 1, column 3 : Couldn't repair and continue parse
+intconstant	/Users/mannyjuarez/Library/Caches/NetBeans/8.2/executor-snippets/run.xml:53: Java returned: 1
+BUILD FAILED (total time: 1 second)

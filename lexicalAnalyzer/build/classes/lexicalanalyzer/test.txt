@@ -3,7 +3,7 @@ int fact (int x) {
     if (x>1) return x * fact(x-1);
     else return 1;
 }
-void main () {
+void main (int x) {
 /* Winter Quarter 2018 CS 411 project #1
 A lexical analyzer */
     int x;
@@ -13,7 +13,7 @@ A lexical analyzer */
     for ( ; x<=10; ) { total = total * x; x = x + 1; }
     println ("iterative result of 10! is ", total);
 }
-class cs411 {
+class cs411 { 
     int Funny; double funny; boolean flag; string s;
     int [] a;
     flag = true;

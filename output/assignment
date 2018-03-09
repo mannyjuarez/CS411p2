@@ -1,0 +1,9 @@
+run:
+"int i = 1;"
+
+int	id	
+9
+Error in line 1, column 7 : Syntax error
+Error in line 1, column 7 : Couldn't repair and continue parse
+assignop	/Users/mannyjuarez/Library/Caches/NetBeans/8.2/executor-snippets/run.xml:53: Java returned: 1
+BUILD FAILED (total time: 1 second)

@@ -1,0 +1,9 @@
+run:
+"class hello { 
+    if (h>w) g=h;
+    else h=g;
+}"
+
+class	id	leftbrace	
+24
+BUILD SUCCESSFUL (total time: 1 second)

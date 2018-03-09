@@ -1,0 +1,29 @@
+run:
+"void f (double x, double y) { }"
+
+void	id	leftparen	double	id	
+10
+comma	
+8
+double	id	
+10
+rightparen	
+8
+
+21
+
+18
+leftbrace	rightbrace	
+42
+
+40
+
+38
+
+16
+
+4
+
+1
+
+BUILD SUCCESSFUL (total time: 1 second)

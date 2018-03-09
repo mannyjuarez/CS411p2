@@ -1,0 +1,54 @@
+run:
+"void f (double x, double y) { 
+    if (h>w) g=h;
+    else h=g;
+    double a;
+}"
+
+void	id	leftparen	double	id	
+10
+comma	
+8
+double	id	
+10
+rightparen	
+8
+
+21
+
+18
+leftbrace	
+if	leftparen	id	greater	
+87
+
+67
+Error in line 1, column 68 : Syntax error
+id	rightparen	
+87
+
+Error in line 1, column 68 : Couldn't repair and continue parse
+67
+
+78
+id	assignop	
+87
+id	semicolon	
+87
+
+67
+
+65
+
+else	
+43
+id	assignop	
+87
+id	semicolon	
+87
+
+67
+
+65
+
+double	/Users/mannyjuarez/Library/Caches/NetBeans/8.2/executor-snippets/run.xml:53: Java returned: 1
+BUILD FAILED (total time: 1 second)

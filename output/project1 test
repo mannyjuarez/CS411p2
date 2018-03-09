@@ -1,0 +1,794 @@
+run:
+# Initializing parser
+# Current Symbol is #11
+int	id	
+# Shift under term #11 to state #12
+9
+# Current token is #48
+# Reduce with prod #9 [NT=4, SZ=1]
+# Reduce rule: top state 0, lhs sym 4 -> state 1
+# Goto state #1
+leftparen	int	id	
+# Shift under term #48 to state #200
+9
+# Current token is #38
+# Shift under term #38 to state #201
+rightparen	
+8
+# Current token is #11
+# Shift under term #11 to state #12
+
+17
+# Current token is #48
+# Reduce with prod #9 [NT=4, SZ=1]
+leftbrace	
+# Reduce rule: top state 201, lhs sym 4 -> state 44
+# Goto state #44
+
+# Shift under term #48 to state #55
+# Current token is #39
+if	leftparen	id	greater	
+# Reduce with prod #8 [NT=3, SZ=2]
+87
+
+67
+# Reduce rule: top state 201, lhs sym 3 -> state 46
+# Goto state #46
+# Reduce with prod #17 [NT=6, SZ=1]
+intconstant	rightparen	
+94
+# Reduce rule: top state 201, lhs sym 6 -> state 202
+# Goto state #202
+# Shift under term #39 to state #203
+# Current token is #42
+
+66
+# Shift under term #42 to state #66
+
+78
+# Current token is #9
+# Shift under term #9 to state #85
+# Current token is #38
+return	id	multiplication	
+# Shift under term #38 to state #171
+87
+# Current token is #48
+
+67
+# Shift under term #48 to state #107
+# Current token is #27
+# Reduce with prod #87 [NT=22, SZ=1]
+id	leftparen	id	minus	
+87
+
+# Reduce rule: top state 171, lhs sym 22 -> state 68
+67
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 171, lhs sym 21 -> state 172
+# Goto state #172
+intconstant	rightparen	
+94
+
+66
+# Shift under term #27 to state #124
+# Current token is #44
+
+71
+# Shift under term #44 to state #96
+# Current token is #39
+# Reduce with prod #94 [NT=25, SZ=1]
+
+# Reduce rule: top state 124, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+64
+# Reduce rule: top state 124, lhs sym 21 -> state 131
+
+# Goto state #131
+# Reduce with prod #78 [NT=21, SZ=3]
+92
+semicolon	
+# Reduce rule: top state 171, lhs sym 21 -> state 172
+90
+# Goto state #172
+
+# Shift under term #39 to state #173
+68
+
+# Current token is #16
+72
+
+# Shift under term #16 to state #73
+else	
+60
+# Current token is #48
+# Shift under term #48 to state #107
+
+49
+# Current token is #23
+# Reduce with prod #87 [NT=22, SZ=1]
+return	intconstant	semicolon	
+94
+# Reduce rule: top state 73, lhs sym 22 -> state 68
+
+66
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+
+rightbrace	
+60
+# Reduce rule: top state 73, lhs sym 21 -> state 183
+# Goto state #183
+
+49
+# Shift under term #23 to state #126
+
+# Current token is #48
+# Shift under term #48 to state #107
+53
+
+# Current token is #38
+45
+# Shift under term #38 to state #109
+
+void	
+# Current token is #48
+42
+
+# Shift under term #48 to state #107
+41
+
+# Current token is #21
+40
+# Reduce with prod #87 [NT=22, SZ=1]
+
+38
+
+# Reduce rule: top state 109, lhs sym 22 -> state 68
+15
+# Goto state #68
+
+4
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 109, lhs sym 21 -> state 110
+# Goto state #110
+# Shift under term #21 to state #119
+# Current token is #44
+# Shift under term #44 to state #96
+# Current token is #39
+# Reduce with prod #94 [NT=25, SZ=1]
+# Reduce rule: top state 119, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 119, lhs sym 21 -> state 136
+# Goto state #136
+id	leftparen	int	id	
+# Reduce with prod #71 [NT=21, SZ=3]
+# Reduce rule: top state 109, lhs sym 21 -> state 110
+9
+# Goto state #110
+# Reduce with prod #64 [NT=30, SZ=1]
+rightparen	
+# Reduce rule: top state 109, lhs sym 30 -> state 111
+8
+# Goto state #111
+# Reduce with prod #92 [NT=24, SZ=1]
+
+# Reduce rule: top state 109, lhs sym 24 -> state 112
+# Goto state #112
+# Shift under term #39 to state #113
+17
+# Current token is #35
+# Reduce with prod #90 [NT=23, SZ=4]
+# Reduce rule: top state 126, lhs sym 23 -> state 98
+# Goto state #98
+# Reduce with prod #68 [NT=21, SZ=1]
+# Reduce rule: top state 126, lhs sym 21 -> state 129
+# Goto state #129
+# Reduce with prod #72 [NT=21, SZ=3]
+# Reduce rule: top state 73, lhs sym 21 -> state 183
+# Goto state #183
+# Shift under term #35 to state #185
+# Current token is #6
+# Reduce with prod #60 [NT=19, SZ=3]
+# Reduce rule: top state 173, lhs sym 19 -> state 69
+# Goto state #69
+# Reduce with prod #49 [NT=13, SZ=1]
+# Reduce rule: top state 173, lhs sym 13 -> state 174
+# Goto state #174
+# Shift under term #6 to state #175
+# Current token is #16
+# Shift under term #16 to state #73
+# Current token is #44
+# Shift under term #44 to state #96
+# Current token is #35
+leftbrace	
+# Reduce with prod #94 [NT=25, SZ=1]
+
+# Reduce rule: top state 73, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 73, lhs sym 21 -> state 183
+# Goto state #183
+int	id	
+# Shift under term #35 to state #185
+# Current token is #43
+# Reduce with prod #60 [NT=19, SZ=3]
+# Reduce rule: top state 175, lhs sym 19 -> state 69
+# Goto state #69
+# Reduce with prod #49 [NT=13, SZ=1]
+# Reduce rule: top state 175, lhs sym 13 -> state 176
+# Goto state #176
+# Reduce with prod #53 [NT=14, SZ=7]
+# Reduce rule: top state 66, lhs sym 14 -> state 82
+# Goto state #82
+# Reduce with prod #45 [NT=13, SZ=1]
+# Reduce rule: top state 66, lhs sym 13 -> state 94
+9
+# Goto state #94
+# Shift under term #43 to state #79
+# Current token is #18
+# Reduce with prod #42 [NT=32, SZ=1]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 66, lhs sym 32 -> state 90
+# Goto state #90
+# Reduce with prod #40 [NT=31, SZ=1]
+# Reduce rule: top state 66, lhs sym 31 -> state 76
+# Goto state #76
+semicolon	
+# Reduce with prod #38 [NT=12, SZ=2]
+8
+# Reduce rule: top state 203, lhs sym 12 -> state 204
+# Goto state #204
+
+# Reduce with prod #15 [NT=5, SZ=6]
+int	
+# Reduce rule: top state 0, lhs sym 5 -> state 15
+7id	
+9
+# Goto state #15
+semicolon	
+8
+# Reduce with prod #4 [NT=1, SZ=1]
+
+println	
+# Reduce rule: top state 0, lhs sym 1 -> state 3
+# Goto state #3
+# Shift under term #18 to state #7
+# Current token is #48
+# Shift under term #48 to state #62
+# Current token is #38
+# Shift under term #38 to state #63
+7leftparen	stringconstant	comma	
+# Current token is #11
+96
+# Shift under term #11 to state #12
+
+# Current token is #48
+66
+# Reduce with prod #9 [NT=4, SZ=1]
+# Reduce rule: top state 63, lhs sym 4 -> state 44
+# Goto state #44
+# Shift under term #48 to state #55
+id	leftparen	intconstant	rightparen	
+# Current token is #39
+94
+# Reduce with prod #8 [NT=3, SZ=2]
+
+# Reduce rule: top state 63, lhs sym 3 -> state 46
+66
+# Goto state #46
+# Reduce with prod #17 [NT=6, SZ=1]
+
+64
+# Reduce rule: top state 63, lhs sym 6 -> state 64
+# Goto state #64
+
+92
+# Shift under term #39 to state #65
+# Current token is #42
+# Shift under term #42 to state #66
+# Current token is #11
+# Shift under term #11 to state #12
+# Current token is #48
+# Reduce with prod #9 [NT=4, SZ=1]
+# Reduce rule: top state 66, lhs sym 4 -> state 44
+# Goto state #44
+comma	
+90
+# Shift under term #48 to state #55
+# Current token is #35
+# Reduce with prod #8 [NT=3, SZ=2]
+
+68
+# Reduce rule: top state 66, lhs sym 3 -> state 2
+# Goto state #2
+# Shift under term #35 to state #199
+# Current token is #11
+# Reduce with prod #7 [NT=2, SZ=2]
+# Reduce rule: top state 66, lhs sym 2 -> state 92
+# Goto state #92
+# Shift under term #11 to state #12
+# Current token is #48
+# Reduce with prod #9 [NT=4, SZ=1]
+stringconstant	rightparen	
+# Reduce rule: top state 92, lhs sym 4 -> state 44
+96
+# Goto state #44
+# Shift under term #48 to state #55
+
+# Current token is #35
+66
+
+64
+# Reduce with prod #8 [NT=3, SZ=2]
+# Reduce rule: top state 92, lhs sym 3 -> state 2
+# Goto state #2
+
+# Shift under term #35 to state #199
+# Current token is #14
+63
+
+63
+semicolon	
+id	
+62
+
+# Reduce with prod #7 [NT=2, SZ=2]
+50
+# Reduce rule: top state 92, lhs sym 2 -> state 92
+assignop	
+87
+intconstant	semicolon	
+94
+# Goto state #92
+
+66
+
+65
+id	
+43
+assignop	
+87
+# Shift under term #14 to state #72
+# Current token is #38
+# Shift under term #38 to state #186
+intconstant	semicolon	
+94
+
+66
+
+65
+
+for	
+43
+leftparen	semicolon	id	lessequal	
+# Current token is #46
+87
+
+67
+# Shift under term #46 to state #97
+intconstant	semicolon	
+94
+
+66
+
+77
+rightparen	leftbrace	id	assignop	
+87
+# Current token is #36
+id	multiplication	
+87
+
+67
+id	semicolon	
+87
+
+67
+# Reduce with prod #96 [NT=25, SZ=1]
+
+72
+
+65
+id	
+43
+assignop	
+87
+id	plus	
+87
+
+67
+intconstant	semicolon	
+94
+
+66
+
+70
+
+65
+rightbrace	
+# Reduce rule: top state 186, lhs sym 25 -> state 70
+43
+
+# Goto state #70
+println	
+42
+
+41
+
+# Reduce with prod #66 [NT=21, SZ=1]
+41
+
+40
+
+38
+
+51
+
+# Reduce rule: top state 186, lhs sym 21 -> state 110
+58
+
+47
+# Goto state #110
+leftparen	stringconstant	comma	
+96
+
+66
+id	rightparen	
+87
+
+67
+
+64
+
+63
+# Shift under term #36 to state #116
+semicolon	
+rightbrace	
+62
+
+50
+
+# Current token is #48
+class	
+42
+
+41
+
+41
+
+# Shift under term #48 to state #107
+41
+
+41
+# Current token is #38
+# Shift under term #38 to state #109
+# Current token is #44
+# Shift under term #44 to state #96
+
+41
+
+40
+
+39
+
+39
+
+38
+
+# Current token is #39
+16
+# Reduce with prod #94 [NT=25, SZ=1]
+
+4
+id	leftbrace	
+# Reduce rule: top state 109, lhs sym 25 -> state 70
+24
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 109, lhs sym 21 -> state 110
+# Goto state #110
+# Reduce with prod #64 [NT=30, SZ=1]
+# Reduce rule: top state 109, lhs sym 30 -> state 111
+# Goto state #111
+# Reduce with prod #92 [NT=24, SZ=1]
+# Reduce rule: top state 109, lhs sym 24 -> state 112
+# Goto state #112
+# Shift under term #39 to state #113
+# Current token is #36
+# Reduce with prod #90 [NT=23, SZ=4]
+# Reduce rule: top state 116, lhs sym 23 -> state 98
+# Goto state #98
+# Reduce with prod #68 [NT=21, SZ=1]
+# Reduce rule: top state 116, lhs sym 21 -> state 110
+# Goto state #110
+# Shift under term #36 to state #116
+# Current token is #46
+# Shift under term #46 to state #97
+# Current token is #39
+# Reduce with prod #96 [NT=25, SZ=1]
+# Reduce rule: top state 116, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 116, lhs sym 21 -> state 110
+# Goto state #110
+# Reduce with prod #64 [NT=30, SZ=1]
+# Reduce rule: top state 116, lhs sym 30 -> state 139
+# Goto state #139
+# Reduce with prod #63 [NT=30, SZ=3]
+# Reduce rule: top state 116, lhs sym 30 -> state 139
+# Goto state #139
+# Reduce with prod #63 [NT=30, SZ=3]
+# Reduce rule: top state 186, lhs sym 30 -> state 187
+# Goto state #187
+# Shift under term #39 to state #188
+# Current token is #35
+# Shift under term #35 to state #189
+# Current token is #48
+# Reduce with prod #62 [NT=20, SZ=5]
+# Reduce rule: top state 92, lhs sym 20 -> state 74
+# Goto state #74
+# Reduce with prod #50 [NT=13, SZ=1]
+# Reduce rule: top state 92, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #48 to state #107
+# Current token is #34
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 94, lhs sym 22 -> state 68
+# Goto state #68
+# Shift under term #34 to state #190
+# Current token is #44
+# Shift under term #44 to state #96
+# Current token is #35
+# Reduce with prod #94 [NT=25, SZ=1]
+# Reduce rule: top state 190, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 190, lhs sym 21 -> state 196
+# Goto state #196
+# Reduce with prod #65 [NT=21, SZ=3]
+# Reduce rule: top state 94, lhs sym 21 -> state 86
+# Goto state #86
+# Shift under term #35 to state #170
+# Current token is #48
+# Reduce with prod #43 [NT=13, SZ=2]
+# Reduce rule: top state 94, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #48 to state #107
+# Current token is #34
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 94, lhs sym 22 -> state 68
+# Goto state #68
+# Shift under term #34 to state #190
+# Current token is #44
+# Shift under term #44 to state #96
+# Current token is #35
+# Reduce with prod #94 [NT=25, SZ=1]
+# Reduce rule: top state 190, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 190, lhs sym 21 -> state 196
+# Goto state #196
+# Reduce with prod #65 [NT=21, SZ=3]
+# Reduce rule: top state 94, lhs sym 21 -> state 86
+# Goto state #86
+# Shift under term #35 to state #170
+# Current token is #8
+# Reduce with prod #43 [NT=13, SZ=2]
+# Reduce rule: top state 94, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #8 to state #91
+# Current token is #38
+# Shift under term #38 to state #148
+# Current token is #35
+# Shift under term #35 to state #150
+# Current token is #48
+# Shift under term #48 to state #107
+# Current token is #26
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 150, lhs sym 22 -> state 68
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 150, lhs sym 21 -> state 151
+# Goto state #151
+# Shift under term #26 to state #114
+# Current token is #44
+# Shift under term #44 to state #96
+# Current token is #35
+# Reduce with prod #94 [NT=25, SZ=1]
+# Reduce rule: top state 114, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 114, lhs sym 21 -> state 141
+# Goto state #141
+# Reduce with prod #77 [NT=21, SZ=3]
+# Reduce rule: top state 150, lhs sym 21 -> state 151
+# Goto state #151
+# Shift under term #35 to state #152
+# Current token is #39
+# Shift under term #39 to state #154
+# Current token is #42
+# Shift under term #42 to state #66
+# Current token is #48
+# Shift under term #48 to state #87
+# Current token is #34
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 66, lhs sym 22 -> state 68
+# Goto state #68
+# Shift under term #34 to state #190
+# Current token is #48
+# Shift under term #48 to state #107
+# Current token is #23
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 190, lhs sym 22 -> state 68
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 190, lhs sym 21 -> state 196
+# Goto state #196
+# Shift under term #23 to state #126
+# Current token is #48
+# Shift under term #48 to state #107
+# Current token is #35
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 126, lhs sym 22 -> state 68
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 126, lhs sym 21 -> state 129
+# Goto state #129
+# Reduce with prod #72 [NT=21, SZ=3]
+# Reduce rule: top state 190, lhs sym 21 -> state 196
+# Goto state #196
+# Reduce with prod #65 [NT=21, SZ=3]
+# Reduce rule: top state 66, lhs sym 21 -> state 86
+# Goto state #86
+# Shift under term #35 to state #170
+# Current token is #48
+# Reduce with prod #43 [NT=13, SZ=2]
+# Reduce rule: top state 66, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #48 to state #107
+# Current token is #34
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 94, lhs sym 22 -> state 68
+# Goto state #68
+# Shift under term #34 to state #190
+# Current token is #48
+# Shift under term #48 to state #107
+# Current token is #20
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 190, lhs sym 22 -> state 68
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 190, lhs sym 21 -> state 196
+# Goto state #196
+# Shift under term #20 to state #117
+# Current token is #44
+# Shift under term #44 to state #96
+# Current token is #35
+# Reduce with prod #94 [NT=25, SZ=1]
+# Reduce rule: top state 117, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 117, lhs sym 21 -> state 138
+# Goto state #138
+# Reduce with prod #70 [NT=21, SZ=3]
+# Reduce rule: top state 190, lhs sym 21 -> state 196
+# Goto state #196
+# Reduce with prod #65 [NT=21, SZ=3]
+# Reduce rule: top state 94, lhs sym 21 -> state 86
+# Goto state #86
+# Shift under term #35 to state #170
+# Current token is #43
+# Reduce with prod #43 [NT=13, SZ=2]
+# Reduce rule: top state 94, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #43 to state #79
+# Current token is #14
+# Reduce with prod #42 [NT=32, SZ=1]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 66, lhs sym 32 -> state 90
+# Goto state #90
+# Reduce with prod #40 [NT=31, SZ=1]
+# Reduce rule: top state 66, lhs sym 31 -> state 76
+# Goto state #76
+# Reduce with prod #38 [NT=12, SZ=2]
+# Reduce rule: top state 154, lhs sym 12 -> state 81
+# Goto state #81
+# Reduce with prod #51 [NT=13, SZ=1]
+# Reduce rule: top state 154, lhs sym 13 -> state 155
+# Goto state #155
+# Reduce with prod #58 [NT=16, SZ=7]
+# Reduce rule: top state 94, lhs sym 16 -> state 71
+# Goto state #71
+# Reduce with prod #47 [NT=13, SZ=1]
+# Reduce rule: top state 94, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #14 to state #72
+# Current token is #38
+# Shift under term #38 to state #186
+# Current token is #46
+# Shift under term #46 to state #97
+# Current token is #36
+# Reduce with prod #96 [NT=25, SZ=1]
+# Reduce rule: top state 186, lhs sym 25 -> state 70
+# Goto state #70
+# Reduce with prod #66 [NT=21, SZ=1]
+# Reduce rule: top state 186, lhs sym 21 -> state 110
+# Goto state #110
+# Shift under term #36 to state #116
+# Current token is #48
+# Shift under term #48 to state #107
+# Current token is #39
+# Reduce with prod #87 [NT=22, SZ=1]
+# Reduce rule: top state 116, lhs sym 22 -> state 68
+# Goto state #68
+# Reduce with prod #67 [NT=21, SZ=1]
+# Reduce rule: top state 116, lhs sym 21 -> state 110
+# Goto state #110
+# Reduce with prod #64 [NT=30, SZ=1]
+# Reduce rule: top state 116, lhs sym 30 -> state 139
+# Goto state #139
+# Reduce with prod #63 [NT=30, SZ=3]
+# Reduce rule: top state 186, lhs sym 30 -> state 187
+# Goto state #187
+# Shift under term #39 to state #188
+# Current token is #35
+# Shift under term #35 to state #189
+# Current token is #43
+# Reduce with prod #62 [NT=20, SZ=5]
+# Reduce rule: top state 94, lhs sym 20 -> state 74
+# Goto state #74
+# Reduce with prod #50 [NT=13, SZ=1]
+# Reduce rule: top state 94, lhs sym 13 -> state 94
+# Goto state #94
+# Shift under term #43 to state #79
+# Current token is #4
+# Reduce with prod #42 [NT=32, SZ=1]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 94, lhs sym 32 -> state 106
+# Goto state #106
+# Reduce with prod #41 [NT=32, SZ=2]
+# Reduce rule: top state 92, lhs sym 32 -> state 90
+# Goto state #90
+# Reduce with prod #40 [NT=31, SZ=1]
+# Reduce rule: top state 92, lhs sym 31 -> state 147
+# Goto state #147
+# Reduce with prod #39 [NT=31, SZ=2]
+# Reduce rule: top state 92, lhs sym 31 -> state 147
+# Goto state #147
+# Reduce with prod #39 [NT=31, SZ=2]
+# Reduce rule: top state 66, lhs sym 31 -> state 76
+# Goto state #76
+# Reduce with prod #38 [NT=12, SZ=2]
+# Reduce rule: top state 65, lhs sym 12 -> state 67
+# Goto state #67
+# Reduce with prod #16 [NT=5, SZ=6]
+# Reduce rule: top state 3, lhs sym 5 -> state 15
+# Goto state #15
+# Reduce with prod #4 [NT=1, SZ=1]
+# Reduce rule: top state 3, lhs sym 1 -> state 3
+# Goto state #3
+# Shift under term #4 to state #10
+# Current token is #48
+# Shift under term #48 to state #17
+# Current token is #42
+BUILD SUCCESSFUL (total time: 1 second)

@@ -675,7 +675,7 @@ class Lexer implements java_cup.runtime.Scanner {
           yycolumn = 0;
           zzR = true;
           break;
-        case '\n':
+        case '\t':
           if (zzR)
             zzR = false;
           else {
@@ -690,10 +690,10 @@ class Lexer implements java_cup.runtime.Scanner {
       }
 
       if (zzR) {
-        // peek one character ahead if it is \n (if we have counted one line too much)
+        // peek one character ahead if it is \t (if we have counted one line too much)
         boolean zzPeek;
         if (zzMarkedPosL < zzEndReadL)
-          zzPeek = zzBufferL[zzMarkedPosL] == '\n';
+          zzPeek = zzBufferL[zzMarkedPosL] == '\t';
         else if (zzAtEOF)
           zzPeek = false;
         else {
@@ -704,7 +704,7 @@ class Lexer implements java_cup.runtime.Scanner {
           if (eof) 
             zzPeek = false;
           else 
-            zzPeek = zzBufferL[zzMarkedPosL] == '\n';
+            zzPeek = zzBufferL[zzMarkedPosL] == '\t';
         }
         if (zzPeek) yyline--;
       }
@@ -776,7 +776,10 @@ class Lexer implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { type = yytext(); return symbol(sym._id);
+            { 
+                System.out.print("id\t");
+                type = yytext(); return symbol(sym._id);
+            
             }
           case 50: break;
           case 2: 
@@ -784,191 +787,284 @@ class Lexer implements java_cup.runtime.Scanner {
             }
           case 51: break;
           case 3: 
-            { System.out.println();
+            { 
+                System.out.println();
             }
           case 52: break;
           case 4: 
-            { return symbol(sym._intconstant);
+            {
+                System.out.print("intconstant\t");
+                return symbol(sym._intconstant);
             }
           case 53: break;
           case 5: 
-            { return symbol(sym._division);
+            {
+                System.out.print("division\t");
+                return symbol(sym._division);
             }
           case 54: break;
           case 6: 
-            { return symbol(sym._multiplication);
+            {
+                System.out.print("multiplication\t");
+                return symbol(sym._multiplication);
             }
           case 55: break;
           case 7: 
-            { return symbol(sym._period);
+            {
+                System.out.print("period\t");
+                return symbol(sym._period);
             }
           case 56: break;
           case 8: 
-            { return symbol(sym._minus);
+            {
+                System.out.print("minus\t");
+                return symbol(sym._minus);
             }
           case 57: break;
           case 9: 
-            { return symbol(sym._assignop);
+            {
+                System.out.print("assignop\t");
+                return symbol(sym._assignop);
             }
           case 58: break;
           case 10: 
-            { return symbol(sym._mod);
+            {
+                System.out.print("mod\t");
+                return symbol(sym._mod);
             }
           case 59: break;
           case 11: 
-            { return symbol(sym._less);
+            {
+                System.out.print("less\t");
+                return symbol(sym._less);
             }
           case 60: break;
-          case 12: 
-            { return symbol(sym._greater);
+          case 12:
+            {
+                System.out.print("greater\t");
+                return symbol(sym._greater);
             }
           case 61: break;
           case 13: 
-            { return symbol(sym._not);
+            { 
+                System.out.print("not\t");
+                return symbol(sym._not);
             }
           case 62: break;
           case 14: 
-            { return symbol(sym._semicolon);
+            {
+                System.out.print("semicolon\t");
+                return symbol(sym._semicolon);
             }
           case 63: break;
           case 15: 
-            { return symbol(sym._comma);
+            {
+                System.out.print("comma\t");
+                return symbol(sym._comma);
             }
           case 64: break;
           case 16: 
-            { return symbol(sym._leftbracket);
+            {
+                System.out.print("leftbracket\t");
+                return symbol(sym._leftbracket);
             }
           case 65: break;
           case 17: 
-            { return symbol(sym._rightbracket);
+            {
+                System.out.print("rightbracket\t");
+                return symbol(sym._rightbracket);
             }
           case 66: break;
           case 18: 
-            { return symbol(sym._leftbrace);
+            { 
+                System.out.print("leftbrace\t");
+                return symbol(sym._leftbrace);
             }
           case 67: break;
           case 19: 
-            { return symbol(sym._rightbrace);
+            { 
+                System.out.print("rightbrace\t");
+                return symbol(sym._rightbrace);
             }
           case 68: break;
           case 20: 
-            { return symbol(sym._leftparen);
+            {
+                System.out.print("leftparen\t");
+                return symbol(sym._leftparen);
             }
           case 69: break;
           case 21: 
-            { return symbol(sym._rightparen);
+            {
+                System.out.print("rightparen\t");
+                return symbol(sym._rightparen);
             }
           case 70: break;
           case 22: 
-            { return symbol(sym._plus);
+            { 
+                System.out.print("plus\t");
+                return symbol(sym._plus);
             }
           case 71: break;
           case 23: 
-            { return symbol(sym._or);
+            { 
+                System.out.print("or\t");
+                return symbol(sym._or);
             }
           case 72: break;
           case 24: 
-            { return symbol(sym._doubleconstant);
+            { 
+                System.out.print("doubleconstant\t");
+                return symbol(sym._doubleconstant);
             }
           case 73: break;
           case 25: 
-            { return symbol(sym._stringconstant);
+            { 
+                System.out.print("stringconstant\t");
+                return symbol(sym._stringconstant);
             }
           case 74: break;
           case 26: 
-            { return symbol(sym._if);
+            { 
+                System.out.print("if\t");
+                return symbol(sym._if);
             }
           case 75: break;
           case 27: 
-            { return symbol(sym._equal);
+            { 
+                System.out.print("equal\t");
+                return symbol(sym._equal);
             }
           case 76: break;
           case 28: 
-            { return symbol(sym._lessequal);
+            { 
+                System.out.print("lessequal\t");
+                return symbol(sym._lessequal);
             }
           case 77: break;
           case 29: 
-            { return symbol(sym._greaterequal);
+            { 
+                System.out.print("greaterequal\t");
+                return symbol(sym._greaterequal);
             }
           case 78: break;
           case 30: 
-            { return symbol(sym._notequal);
+            { 
+                System.out.print("notequal\t");
+                return symbol(sym._notequal);
             }
           case 79: break;
           case 31: 
-            { return symbol(sym._and);
+            {
+                System.out.print("and\t");
+                return symbol(sym._and);
             }
           case 80: break;
           case 32: 
-            { return symbol(sym._int);
+            { 
+                System.out.print("int\t");
+                return symbol(sym._int);
             }
           case 81: break;
           case 33: 
-            { return symbol(sym._for);
+            { 
+                System.out.print("for\t");
+                return symbol(sym._for);
             }
           case 82: break;
           case 34: 
-            { return symbol(sym._else);
+            { 
+                System.out.print("else\t");
+                return symbol(sym._else);
             }
           case 83: break;
           case 35: 
-            { return symbol(sym._booleanconstant);
+            { 
+                System.out.print("booleanconstant\t");
+                return symbol(sym._booleanconstant);
             }
           case 84: break;
           case 36: 
-            { return symbol(sym._void);
+            { 
+                System.out.print("void\t");
+                return symbol(sym._void);
             }
           case 85: break;
           case 37: 
-            { return symbol(sym._class);
+            {  
+                System.out.print("class\t");
+                return symbol(sym._class); 
             }
           case 86: break;
           case 38: 
-            { return symbol(sym._while);
+            {
+                System.out.print("while\t");
+                return symbol(sym._while);
             }
           case 87: break;
           case 39: 
-            { return symbol(sym._break);
+            {
+                System.out.print("break\t");
+                return symbol(sym._break);
             }
           case 88: break;
           case 40: 
-            { return symbol(sym._string);
+            { 
+                System.out.print("string\t");
+                return symbol(sym._string);
             }
           case 89: break;
           case 41: 
-            { return symbol(sym._return);
+            {   
+                System.out.print("return\t");
+                return symbol(sym._return);
             }
           case 90: break;
           case 42: 
-            { return symbol(sym._readln);
+            { 
+                System.out.print("readln\t");
+                return symbol(sym._readln);
             }
           case 91: break;
           case 43: 
-            { return symbol(sym._double);
+            {
+                System.out.print("double\t");
+                return symbol(sym._double);
             }
           case 92: break;
           case 44: 
-            { return symbol(sym._println);
+            {
+                System.out.print("println\t");
+                return symbol(sym._println);
             }
           case 93: break;
           case 45: 
-            { return symbol(sym._extends);
+            { 
+                System.out.print("extends\t");
+                return symbol(sym._extends);
             }
           case 94: break;
           case 46: 
-            { return symbol(sym._boolean);
+            {
+                System.out.print("boolean\t");
+                return symbol(sym._boolean);
             }
           case 95: break;
           case 47: 
-            { return symbol(sym._newarray);
+            {
+                System.out.print("newarray\t");
+                return symbol(sym._newarray);
             }
           case 96: break;
           case 48: 
-            { return symbol(sym._interface);
+            { 
+                System.out.print("interface\t");
+                return symbol(sym._interface);
             }
           case 97: break;
           case 49: 
-            { return symbol(sym._implements);
+            { 
+                System.out.print("implements\t");
+                return symbol(sym._implements);
             }
           case 98: break;
           default:

@@ -1,0 +1,71 @@
+run:
+"void f (double x, double y) { 
+    if (h>w) g=h;
+    else h=g;
+}"
+
+void	id	leftparen	double	id	
+10
+comma	
+8
+double	id	
+10
+rightparen	
+8
+
+21
+
+18
+leftbrace	
+if	leftparen	id	greater	
+87
+
+67
+id	rightparen	
+87
+
+67
+
+78
+id	assignop	
+87
+id	semicolon	
+87
+
+67
+
+65
+
+else	
+43
+id	assignop	
+87
+id	semicolon	
+87
+
+67
+
+65
+
+rightbrace	
+43
+
+53
+
+45
+
+42
+
+41
+
+40
+
+38
+
+16
+
+4
+
+1
+
+BUILD SUCCESSFUL (total time: 1 second)

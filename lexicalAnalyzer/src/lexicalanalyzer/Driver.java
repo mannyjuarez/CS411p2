@@ -38,7 +38,7 @@ public class Driver {
         try {
           lex = new Lexer(inputFile);
           parse = new parser(lex);
-          while ( !lex.zzAtEOF ){
+          while ( !lex.zzAtEOF){
               parse.debug_parse();
           } 
         }

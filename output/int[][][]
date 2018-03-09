@@ -1,0 +1,19 @@
+run:
+"int[][][] super;"
+
+int	leftbracket	
+9
+rightbracket	leftbracket	
+13
+rightbracket	leftbracket	
+13
+rightbracket	id	
+13
+semicolon	
+8
+
+7
+3
+1
+
+BUILD SUCCESSFUL (total time: 1 second)

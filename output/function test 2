@@ -1,0 +1,121 @@
+run:
+"double function (int x, int y) {
+    int a;
+    int b;
+    for (a; i < a; i)
+    {
+        b = b + b;
+    }
+    return b;
+}"
+
+double	id	
+10
+leftparen	int	id	
+9
+comma	
+8
+int	id	
+9
+rightparen	
+8
+
+21
+
+18
+leftbrace	
+int	id	
+9
+semicolon	
+8
+
+int	
+7id	
+9
+semicolon	
+8
+
+for	
+7leftparen	id	semicolon	
+87
+
+67
+id	less	
+87
+
+67
+id	semicolon	
+87
+
+67
+
+76
+id	rightparen	
+87
+
+67
+
+leftbrace	
+id	assignop	
+87
+id	plus	
+87
+
+67
+id	semicolon	
+87
+
+67
+
+70
+
+65
+
+rightbrace	
+43
+
+return	
+42
+
+41
+
+40
+
+38
+
+51
+
+55
+
+47
+id	semicolon	
+87
+
+67
+
+rightbrace	
+60
+
+49
+
+42
+
+41
+
+41
+
+40
+
+39
+
+39
+
+38
+
+15
+
+4
+
+1
+
+BUILD SUCCESSFUL (total time: 1 second)
