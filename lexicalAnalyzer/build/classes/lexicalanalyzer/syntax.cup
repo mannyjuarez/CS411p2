@@ -43,222 +43,222 @@ precedence left _leftbracket, _period;
 
 Start with Program;
 
-Program         ::= Decl 
+Program         ::= Decl                //1
                     |
-                    Decl Program
+                    Decl Program        //2
                     ;
 
-Decl            ::= VariableDecl
+Decl            ::= VariableDecl        //3
                     |
-                    FunctionDecl
+                    FunctionDecl        //4
                     |
-                    ClassDecl
+                    ClassDecl           //5 
                     |
-                    InterfaceDecl
+                    InterfaceDecl       //6
                     ;
 
-VariableDecl    ::= Variable _semicolon
+VariableDecl    ::= Variable _semicolon //7
                     ;
 
-Variable        ::= Type _id
+Variable        ::= Type _id            //8
                     ;
 
-Type            ::= _int
+Type            ::= _int                //9
                     |
-                    _double
+                    _double             //10
                     |
-                    _boolean
+                    _boolean            //11
                     |
-                    _string
+                    _string             //12
                     |
-                    Type _leftbracket _rightbracket
+                    Type _leftbracket _rightbracket //13
                     |
-                    _id
+                    _id                              //14
                     ;
 
-FunctionDecl    ::= Type _id _leftparen Formals _rightparen StmtBlock
+FunctionDecl    ::= Type _id _leftparen Formals _rightparen StmtBlock   //15
                     |
-                    _void _id _leftparen Formals _rightparen StmtBlock
+                    _void _id _leftparen Formals _rightparen StmtBlock  //16
                     ;
 
-Formals         ::= Variable
+Formals         ::= Variable                                            //17
                     |
-                    Variable _comma List
+                    Variable _comma List                                //18
                     |
-                    ;
-List            ::= Variable _comma List
+                    ;                                                   //19
+List            ::= Variable _comma List                                //20
                     |
-                    Variable
-                    ;
-
-ClassDecl       ::= _class _id Extends Implements _leftbrace KleeneField _rightbrace
+                    Variable                                            //21
                     ;
 
-Extends         ::= _extends _id
-                    |
+ClassDecl       ::= _class _id Extends Implements _leftbrace KleeneField _rightbrace        //22
                     ;
 
-Implements      ::= _implements IDS
+Extends         ::= _extends _id                                        //23
+                    |   
+                    ;                                                   //24
+
+Implements      ::= _implements IDS                                     //25
                     |
+                    ;                                                   //26
+
+KleeneField     ::= Field KleeneField                                   //27
+                    |
+                    ;                                                   //28
+
+IDS             ::= _id                                                 //29
+                    |
+                    _id _comma IDS                                      //30
                     ;
 
-KleeneField     ::= Field KleeneField
+Field           ::= VariableDecl                                        //31
                     |
+                    FunctionDecl                                        //32
                     ;
 
-IDS             ::= _id
-                    |
-                    _id _comma IDS
+InterfaceDecl   ::= _interface _id _leftbrace KleenePrototype _rightbrace   //33
                     ;
 
-Field           ::= VariableDecl
+KleenePrototype ::= Prototype KleenePrototype                           //34
                     |
-                    FunctionDecl
+                    ;                                                   //35
+
+Prototype       ::= Type _id _leftparen Formals _rightparen _semicolon  //36
+                    |
+                    _void _id _leftparen Formals _rightparen _semicolon //37
                     ;
 
-InterfaceDecl   ::= _interface _id _leftbrace KleenePrototype _rightbrace
+StmtBlock       ::= _leftbrace KleeneVarDec                             //38
                     ;
 
-KleenePrototype ::= Prototype KleenePrototype
+KleeneVarDec     ::= VariableDecl KleeneVarDec                          //39
                     |
+                    KleeneStmt                                          //40
                     ;
 
-Prototype       ::= Type _id _leftparen Formals _rightparen _semicolon
+KleeneStmt      ::= Stmt KleeneStmt                                     //41
                     |
-                    _void _id _leftparen Formals _rightparen _semicolon
+                    _rightbrace                                         //42
                     ;
 
-StmtBlock       ::= _leftbrace KleeneVarDec 
+Stmt            ::= Expr _semicolon                                     //43
+                    |
+                    _semicolon                                          //44
+                    |
+                    IfStmt                                              //45
+                    |
+                    WhileStmt                                           //46    
+                    |
+                    ForStmt                                             //47
+                    |
+                    BreakStmt                                           //48
+                    |
+                    ReturnStmt                                          //49    
+                    |
+                    PrintStmt                                           //50
+                    |
+                    StmtBlock                                           //51
                     ;
 
-KleeneVarDec     ::= VariableDecl KleeneVarDec
+IfStmt          ::= _if _leftparen Expr _rightparen Stmt    %prec _if    //52
                     |
-                    KleeneStmt
+                    _if _leftparen Expr _rightparen Stmt _else Stmt     //53
                     ;
 
-KleeneStmt      ::= Stmt KleeneStmt
-                    |
-                    _rightbrace
-                    ;
+WhileStmt       ::= _while _leftparen Expr _rightparen Stmt              //54
+                    ;   
 
-Stmt            ::= Expr _semicolon
+ForStmt         ::= _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt   //55
                     |
-                    _semicolon
+                    _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt        //56
                     |
-                    IfStmt
+                    _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt        //57
                     |
-                    WhileStmt
-                    |
-                    ForStmt
-                    |
-                    BreakStmt
-                    |
-                    ReturnStmt
-                    |
-                    PrintStmt
-                    |
-                    StmtBlock
-                    ;
-
-IfStmt          ::= _if _leftparen Expr _rightparen Stmt    %prec _if
-                    |
-                    _if _leftparen Expr _rightparen Stmt _else Stmt
-                    ;
-
-WhileStmt       ::= _while _leftparen Expr _rightparen Stmt
-                    ;
-
-ForStmt         ::= _for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt
-                    |
-                    _for _leftparen _semicolon Expr _semicolon Expr _rightparen Stmt
-                    |
-                    _for _leftparen Expr _semicolon Expr _semicolon _rightparen Stmt
-                    |
-                    _for _leftparen _semicolon Expr _semicolon _rightparen Stmt
+                    _for _leftparen _semicolon Expr _semicolon _rightparen Stmt             //58
                     ;
 
 
-BreakStmt       ::= _break _semicolon
+BreakStmt       ::= _break _semicolon                                   //59
                     ;
 
-ReturnStmt      ::= _return Expr _semicolon
+ReturnStmt      ::= _return Expr _semicolon                             //60
                     |
-                    _return _semicolon
+                    _return _semicolon                                  //61
                     ;
-PrintStmt       ::= _println _leftparen PositiveExpr _rightparen _semicolon
-                    ;
-
-PositiveExpr    ::= Expr _comma PositiveExpr
-                    |
-                    Expr
+PrintStmt       ::= _println _leftparen PositiveExpr _rightparen _semicolon //62
                     ;
 
-Expr            ::= Lvalue _assignop Expr
+PositiveExpr    ::= Expr _comma PositiveExpr                                //63
                     |
-                    Constant
-                    |
-                    Lvalue
-                    |
-                    Call
-                    |
-                    _leftparen Expr _rightparen
-                    |
-                    Expr _plus Expr
-                    |
-                    Expr _minus Expr
-                    |
-                    Expr _multiplication Expr
-                    |
-                    Expr _division Expr
-                    |
-                    Expr _mod Expr
-                    |
-                    _minus Expr
-                    |
-                    Expr _less Expr
-                    |
-                    Expr _lessequal Expr
-                    |
-                    Expr _greater Expr
-                    |
-                    Expr _greaterequal Expr
-                    |
-                    Expr _equal Expr
-                    |
-                    Expr _notequal Expr
-                    |
-                    Expr _and Expr
-                    |
-                    Expr _or Expr
-                    |
-                    _not Expr
-                    |
-                    _readln _leftparen _rightparen
-                    |
-                    _newarray _leftparen _intconstant _comma Type _rightparen
+                    Expr                                                    //64
                     ;
 
-Lvalue          ::= _id
+Expr            ::= Lvalue _assignop Expr                                   //65
                     |
-                    Lvalue _leftbracket Expr _rightbracket
+                    Constant                                                //66
+                    |   
+                    Lvalue                                                  //67
                     |
-                    Lvalue _period _id
+                    Call                                                    //68
+                    |
+                    _leftparen Expr _rightparen                             //69
+                    |       
+                    Expr _plus Expr                                         //70
+                    |
+                    Expr _minus Expr                                        //71
+                    |       
+                    Expr _multiplication Expr                               //72
+                    |
+                    Expr _division Expr                                     //73
+                    |
+                    Expr _mod Expr                                          //74
+                    |   
+                    _minus Expr                                             //75
+                    |
+                    Expr _less Expr                                         //76
+                    |   
+                    Expr _lessequal Expr                                    //77
+                    |
+                    Expr _greater Expr                                      //78
+                    |
+                    Expr _greaterequal Expr                                 //79
+                    |
+                    Expr _equal Expr                                        //80
+                    |
+                    Expr _notequal Expr                                     //81
+                    |
+                    Expr _and Expr                                          //82
+                    |
+                    Expr _or Expr                                           //83
+                    |
+                    _not Expr                                               //84
+                    |
+                    _readln _leftparen _rightparen                          //85
+                    |
+                    _newarray _leftparen _intconstant _comma Type _rightparen   //86
                     ;
 
-Call            ::= _id _leftparen Actuals _rightparen
+Lvalue          ::= _id                                                     //87
                     |
-                    _id _period _id _leftparen Actuals _rightparen
+                    Lvalue _leftbracket Expr _rightbracket                  //88
+                    |
+                    Lvalue _period _id                                      //89
                     ;
 
-Actuals         ::= PositiveExpr
+Call            ::= _id _leftparen Actuals _rightparen                      //90    
                     |
+                    _id _period _id _leftparen Actuals _rightparen          //91
                     ;
 
-Constant        ::= _intconstant
+Actuals         ::= PositiveExpr                                            //92
                     |
-                    _doubleconstant
+                    ;                                                       //93
+
+Constant        ::= _intconstant                                            //94
                     |
-                    _stringconstant
+                    _doubleconstant                                         //95
                     |
-                    _booleanconstant
+                    _stringconstant                                         //96
+                    |   
+                    _booleanconstant                                        //97
                     ;                      

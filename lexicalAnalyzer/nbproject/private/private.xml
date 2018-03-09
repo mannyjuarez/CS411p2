@@ -5,7 +5,9 @@
         <group>
             <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/Driver.java</file>
             <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/test.txt</file>
+            <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/syntax.cup</file>
             <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/Lexer.java</file>
+            <file>file:/Users/mannyjuarez/Documents/GitHub/CS411p2/lexicalAnalyzer/src/lexicalanalyzer/parser.java</file>
         </group>
     </open-files>
 </project-private>
